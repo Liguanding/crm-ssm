@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!--   配置日志,STDOUT_LOGGING 代表输出日志到控制台-->
+    <typeAliases>
+        <!--        <typeAlias type="com.bjpowernode.dao.StudentDao" alias="Student"></typeAlias>-->
+        <package name="com.bjpowernode.crm.settings.domain"/>
+<!--        <package name="com.bjpowernode.crm.workbench.domain"/>-->
+    </typeAliases>
+
+
+    <mappers>
+        <!--        <mapper resource="com/bjpowernode/dao/StudentDao.xml"></mapper>-->
+        <package name="com.bjpowernode.crm.settings.dao"/>
+<!--        <package name="com.bjpowernode.crm.workbench.dao"/>-->
+    </mappers>
+
+
+</configuration>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <context:component-scan base-package="com.bjpowernode.crm.settings.web.controller"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="suffix" value="/workbench"></property>
+        <property name="prefix" value=".jsp"></property>
+    </bean>
+    <mvc:annotation-driven/>
+
+<!--
+    此种拦截器的简单配置,可能会与springmvc的annotation-driven有冲突,
+    https://blog.csdn.net/qq_21294095/article/details/85019603
+-->
+<!--
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+&lt;!&ndash;            /** 将拦截的是所有的controller  &ndash;&gt;
+            <mvc:mapping path="/**"/>
+&lt;!&ndash;            <mvc:exclude-mapping path="/**/user/login.do"/>&ndash;&gt;
+            <bean class="com.bjpowernode.crm.settings.web.interceptor.LoginInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+-->
+
+
+</beans>
