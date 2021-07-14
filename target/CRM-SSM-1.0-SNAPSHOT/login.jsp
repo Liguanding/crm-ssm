@@ -47,14 +47,13 @@
 				return false;
 			}
 			$.ajax({
-				url:"user/login.do",
+				url:"settings/user/login.do",
 				data:{
 					"loginAct":loginAct,
 					"loginPwd":loginPwd
 				},
 				type:"post",
 				dataType:"json",
-
 				success:function (data){
 					if(data.success){
 						window.location.href="workbench/index.jsp";

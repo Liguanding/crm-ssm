@@ -1,4 +1,4 @@
-package com.bjpowernode.crm.settings.domain;
+package com.bjpowernode.crm.domain;
 
 public class User {
     private String id; //编号,主键

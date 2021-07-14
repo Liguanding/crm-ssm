@@ -1,16 +1,15 @@
-package com.bjpowernode.crm.settings.service.impl;
+package com.bjpowernode.crm.service.impl;
 
 import com.bjpowernode.crm.exception.LoginException;
-import com.bjpowernode.crm.settings.dao.UserDao;
-import com.bjpowernode.crm.settings.domain.User;
-import com.bjpowernode.crm.settings.service.UserService;
+import com.bjpowernode.crm.dao.UserDao;
+import com.bjpowernode.crm.domain.User;
+import com.bjpowernode.crm.service.UserService;
 import com.bjpowernode.crm.utils.DateTimeUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -43,5 +42,11 @@ public class UserServiceImpl implements UserService {
 //            throw new LoginException("IP地址受限");
 //        }
         return user;
+    }
+
+    @Override
+    public List<User> getUserList() {
+
+        return userDao.getUserList();
     }
 }

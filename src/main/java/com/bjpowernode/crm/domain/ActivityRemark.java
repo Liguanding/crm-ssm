@@ -1,4 +1,4 @@
-package com.bjpowernode.crm.workbench.domain;
+package com.bjpowernode.crm.domain;
 
 public class ActivityRemark {
     private String id; //主键

@@ -1,6 +1,6 @@
 package com.bjpowernode.crm.web.filter;
 
-import com.bjpowernode.crm.settings.domain.User;
+import com.bjpowernode.crm.domain.User;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
@@ -18,7 +18,7 @@ public class LoginFilter implements Filter {
         System.out.println("进入过滤器");
         HttpServletRequest request = (HttpServletRequest)servletRequest;
         HttpServletResponse response = (HttpServletResponse)servletResponse;
-        if("/login.jsp".equals(request.getServletPath()) || "/user/login.do".equals(request.getServletPath())){
+        if("/login.jsp".equals(request.getServletPath()) || "/settings/user/login.do".equals(request.getServletPath())){
             filterChain.doFilter(request,response);
         }else {
             HttpSession session = request.getSession();

@@ -26,6 +26,19 @@
 		$("addBtn").click(function (){
 			$("#createActivityModal").modal("show");
 		})
+
+		$.ajax({
+			url:"workbench/activity/getUserList.do",
+			type:"get",
+			dataType:"json",
+			success:function (data){
+				var html = "<option></option>";
+				$.each(data,function (i,n){
+					html += "<option value='" + n.id +"'>" + n.name+"</option>";
+				})
+			}
+		})
+
 	});
 	
 </script>
