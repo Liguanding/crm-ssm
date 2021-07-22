@@ -26,4 +26,6 @@
           getServerName():获取的是域名(xxx.com)
           getLocalName:获取到的是IP
 
-4
+4 ajax的全局刷新问题
+      <button type="submit" id="searchBtn" class="btn btn-default">查询</button>   会导致页面多进行一次全局刷新 换成下面即可
+      <button type="button" id="searchBtn" class="btn btn-default">查询</button>

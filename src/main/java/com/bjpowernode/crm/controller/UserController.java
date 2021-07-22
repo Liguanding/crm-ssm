@@ -24,13 +24,13 @@ public class UserController {
     @RequestMapping(value = "/login.do")
     @ResponseBody
     public void login(String loginAct, String loginPwd, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("进入到用户控制器");
+//        System.out.println("进入到用户控制器");
         loginPwd = MD5Util.getMD5(loginPwd);
         String ip = request.getRemoteAddr();
-        System.out.println("当前请求登录的ip为: " + ip);
+//        System.out.println("当前请求登录的ip为: " + ip);
 
         try {
-            User user = userService.login(loginAct,loginPwd,ip);
+            User user = userService.queryUser(loginAct,loginPwd,ip);
             request.getSession().setAttribute("user",user);
             PrintJson.printJsonFlag(response,true);
         }catch (Exception e){

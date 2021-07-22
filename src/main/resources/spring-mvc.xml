@@ -14,8 +14,8 @@
     <context:component-scan base-package="com.bjpowernode.crm.controller"/>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="suffix" value="/workbench"></property>
-        <property name="prefix" value=".jsp"></property>
+        <property name="prefix" value="/workbench/"></property>
+        <property name="suffix" value=".jsp"></property>
     </bean>
 
 
@@ -30,8 +30,6 @@
             <bean class="com.bjpowernode.crm.web.handle.LoginInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
-
-
     <mvc:annotation-driven/>
 
 </beans>

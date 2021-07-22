@@ -5,7 +5,7 @@
 
 
 <mapper namespace="com.bjpowernode.crm.dao.UserDao">
-    <select id="login" resultType="User">
+    <select id="selectUser" resultType="User">
         select * from tbl_user where loginAct=#{loginAct} and loginPwd=#{loginPwd}
     </select>
 

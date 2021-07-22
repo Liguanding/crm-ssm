@@ -11,7 +11,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        System.out.println("拦截器执行了");
+//        System.out.println("拦截器执行了");
         String path = request.getServletPath();
         if ("/login.jsp".equals(path) || "/settings/user/login.do".equals(path)){
             return true;
