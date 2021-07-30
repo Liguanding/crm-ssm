@@ -4,6 +4,7 @@ import com.bjpowernode.crm.dao.ActivityDao;
 import com.bjpowernode.crm.dao.ActivityRemarkDao;
 import com.bjpowernode.crm.dao.UserDao;
 import com.bjpowernode.crm.domain.Activity;
+import com.bjpowernode.crm.domain.ActivityRemark;
 import com.bjpowernode.crm.domain.User;
 import com.bjpowernode.crm.service.ActivityService;
 import com.bjpowernode.crm.vo.PaginationVO;
@@ -86,5 +87,37 @@ public class ActivityServiceImpl implements ActivityService {
     public Activity detail(String id) {
         Activity activity = activityDao.detail(id);
         return activity;
+    }
+
+    @Override
+    public List<ActivityRemark> getRemarkListByAid(String activityId) {
+        List<ActivityRemark> activityRemarkList = activityRemarkDao.getRemarkListByAid(activityId);
+        return activityRemarkList;
+    }
+
+    @Override
+    public boolean deleteRemark(String id) {
+        boolean flag = true;
+        int count = activityRemarkDao.deleteRemark(id);
+        if(count != 1){
+            flag = false;
+        }
+        return flag;
+    }
+
+    @Override
+    public boolean saveRemark(ActivityRemark ar) {
+        boolean flag = activityRemarkDao.saveRemark(ar);
+        return flag;
+    }
+
+    @Override
+    public boolean updateRemark(ActivityRemark ar) {
+        boolean flag = true;
+        int count = activityRemarkDao.updateRemark(ar);
+        if (count != 1){
+            flag = false;
+        }
+        return flag;
     }
 }
