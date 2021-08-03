@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.bjpowernode.crm.dao.ClueDao">
+    <select id="getTotalByCondition" resultType="int">
+        select count(*) from tbl_clue a join tbl_user u on a.owner = u.id
+        <where>
+            <if test="name!=null and name!=''">
+                a.fullname like '%' #{name} '%'
+            </if>
+            <if test="company!=null and company!=''">
+                a.company like '%' #{company} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                a.owner like '%' #{owner} '%'
+            </if>
+            <if test="source!=null and source!=''">
+                a.source like '%' #{source} '%'
+            </if>
+            <if test="phone!=null and phone!=''">
+                a.phone like '%' #{phone} '%'
+            </if>
+            <if test="mphone!=null and mphone!=''">
+                a.mphone like '%' #{mphone} '%'
+            </if>
+            <if test="state!=null and state!=''">
+                a.state like '%' #{state} '%'
+            </if>
+        </where>
+    </select>
+
+    <select id="getClueListByCondition" resultType="com.bjpowernode.crm.domain.Clue">
+        select a.id,a.fullname,a.appellation, a.company, a.phone, a.mphone,a.source, u.name as owner, a.state
+        from tbl_clue a join tbl_user u on a.owner=u.id
+        <where>
+            <if test="name!=null and name!=''">
+                a.fullname like '%' #{name} '%'
+            </if>
+            <if test="company!=null and company!=''">
+                a.company like '%' #{company} '%'
+            </if>
+            <if test="owner!=null and owner!=''">
+                a.owner like '%' #{owner} '%'
+            </if>
+            <if test="source!=null and source!=''">
+                a.source like '%' #{source} '%'
+            </if>
+            <if test="phone!=null and phone!=''">
+                a.phone like '%' #{phone} '%'
+            </if>
+            <if test="mphone!=null and mphone!=''">
+                a.mphone like '%' #{mphone} '%'
+            </if>
+            <if test="state!=null and state!=''">
+                a.state like '%' #{state} '%'
+            </if>
+        </where>
+        order by a.createTime desc limit #{beginIndex},#{pageSize}
+    </select>
+    
+    <insert id="save">
+        insert into tbl_clue(
+            id,
+            fullname,
+            appellation,
+            owner,
+            company,
+            job,
+            email,
+            phone,
+            website,
+            mphone,
+            state,
+            source,
+            createBy,
+            createTime,
+            description,
+            contactSummary,
+            nextContactTime,
+            address
+        ) values(
+            #{id},
+            #{fullname},
+            #{appellation},
+            #{owner},
+            #{company},
+            #{job},
+            #{email},
+            #{phone},
+            #{website},
+            #{mphone},
+            #{state},
+            #{source},
+            #{createBy},
+            #{createTime},
+            #{description},
+            #{contactSummary},
+            #{nextContactTime},
+            #{address}
+        )
+    </insert>
+
+    <select id="getCountByIds" resultType="int">
+        select count(*) from tbl_clue
+        where id in
+        <foreach collection="array" separator="," item="id" open="(" close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <delete id="deleteByAids">
+        delete from tbl_clue
+        where id in
+        <foreach collection="array" separator="," item="id" open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <select id="getClueById" resultType="com.bjpowernode.crm.domain.Clue">
+--         select a.id,a.fullname,a.appellation, a.company, a.phone, a.mphone,a.source,a,email, a,website,u.name as owner, a.state,a.source,a.description,a.contactSummary,a.nextContactTime,a.address
+        select *
+        from tbl_clue
+        where id = #{id}
+    </select>
+
+    <update id="update">
+        update tbl_clue set
+            fullname=#{fullname},
+            appellation=#{appellation},
+            owner=#{owner},
+            company=#{company},
+            job=#{job},
+            email=#{email},
+            phone=#{phone},
+            mphone=#{mphone},
+            state=#{state},
+            source=#{source},
+            editTime=#{editTime},
+            editBy=#{editBy},
+            description=#{description},
+            contactSummary=#{contactSummary},
+            nextContactTime=#{nextContactTime},
+            address=#{address}
+        where id= #{id}
+    </update>
+</mapper>

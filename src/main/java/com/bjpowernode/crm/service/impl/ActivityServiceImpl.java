@@ -40,6 +40,7 @@ public class ActivityServiceImpl implements ActivityService {
         int total = activityDao.getTotalByCondition(map);
 
         PaginationVO paginationVO = new PaginationVO();
+
         paginationVO.setDataList(activityList);
         paginationVO.setTotal(total);
         return paginationVO;
